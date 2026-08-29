@@ -5,9 +5,6 @@ across a real 3D map of their physical location, walks through procedurally scat
 and trees, and can approach and tap **mission points** — real-world locations that open a
 data-driven mini-game (multiple-choice quiz or photo puzzle) rewarding the player on success.
 
-> Replace this title / description with your actual project name and pitch — this is a working
-> placeholder written from the project's build history.
-
 ---
 
 ## Tech Stack
