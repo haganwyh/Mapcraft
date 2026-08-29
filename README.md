@@ -1,4 +1,4 @@
-# Mapbox Walking Mission Game
+# Mapcraft Map Exploration Game
 
 A GPS-driven walking game built on the **Mapbox Unity SDK v3.1**: the player's avatar moves
 across a real 3D map of their physical location, walks through procedurally scattered flowers
