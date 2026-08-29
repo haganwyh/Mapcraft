@@ -35,7 +35,6 @@ custom systems are added alongside it, never inside it.
 | Mission Points | Tappable 3D markers loaded from `missions.json`, shown within a radius of the player, drag-safe tap detection | Stable | `Documentation~/FlowerFieldAndMissions_SystemReference.md` (Part B) |
 | MCQ Mini-game | Multiple-choice quiz per mission, content from `quizzes.csv`, up to 5 options | Implemented | *(this README — see [Content Authoring](#content-authoring))* |
 | Puzzle Mini-game | Photo-piece placement puzzle per mission, content from `puzzles.csv` + `puzzlepieces.csv` | CSV reader done; UI/placement gameplay in progress | *(this README)* |
-| Energy System | Global player resource; a wrong mini-game answer costs 1 energy and offers retry/exit; replays are always free | **Planned, not yet built** | see [Open Items](#open-items--roadmap) |
 
 The exclusion machinery (avoiding water/roads/buildings) is **shared** between Tree Scatter and
 Flower Field via `ExclusionRegistry` / `ExclusionSampling` — any change to that geometry or
