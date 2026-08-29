@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3211759014297763884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8636cded00e34372b9a2ee2a3bca4801, type: 3}
+  m_Name: NewFeatureNumberPropertyFilterObject
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  NumberFilterSettings:
+    checkOperation: 3
+    PropertyName: filterrank
+    FilterValue: 1
+--- !u!114 &-1111098508876544791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1314e11c7933043f7a624e3031f2d686, type: 3}
+  m_Name: PoiLabelModifierObject
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  Settings:
+    Prefab: {fileID: 3387480027705797073, guid: 724102f8b7b584959873e5827c19cd07, type: 3}
+    ScalePrefabToWorld: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a17705f45444b729e601b91361775ed, type: 3}
+  m_Name: PoiModifierStack_Rank1
+  m_EditorClassIdentifier: 
+  Settings:
+    VisibilityZoomRange: {x: 1, y: 20}
+    MergeObjects: 0
+    LayerType: 2
+  Filters: {fileID: 9189046237209298896}
+  MeshModifiers: []
+  GoModifiers:
+  - {fileID: -1111098508876544791}
+--- !u!114 &8231987721467714699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b595f671d3c743e9921a81a8fa6a4b8f, type: 3}
+  m_Name: NewGeometryTypeFilterObject
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  Value: 2
+--- !u!114 &9189046237209298896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8a61183121446bbd024747630bf05c, type: 3}
+  m_Name: FilterStack
+  m_EditorClassIdentifier: 
+  Filters:
+  - {fileID: 8231987721467714699}
+  - {fileID: -3211759014297763884}
+  Type: 0

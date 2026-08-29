@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146fc6c0c5a76b24ba7e5a8354b1be36, type: 3}
+  m_Name: BuildingExclusionModifier
+  m_EditorClassIdentifier: Assembly-CSharp::Mapbox.VectorModule.MeshGeneration.MeshModifiers.ScriptableObjects.ExclusionCaptureMeshModifierObject
+  m_Active: 1
+  GeometryType: 0
+  SimplifyEpsilon: 0.004
+  MinTileZoom: 16
+  MaxTileZoom: 17
+  IncludeTunnels: 0
+  IncludeFerryRoutes: 0
+  IncludeUndergroundBuildings: 0

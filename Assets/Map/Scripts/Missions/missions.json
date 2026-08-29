@@ -1,0 +1,64 @@
+{
+  "missions": [
+    {
+      "id": "hk_star_ferry",
+      "type": "Mcq",
+      "latitude": 22.293900,
+      "longitude": 114.168600,
+      "title": "Star Ferry Pier",
+      "description": "Cross the harbour the old way.",
+      "photoKey": "star_ferry",
+      "interactRadiusMetres": 0
+    },
+    {
+      "id": "hk_clock_tower",
+      "type": "Mcq",
+      "latitude": 22.293600,
+      "longitude": 114.169700,
+      "title": "Clock Tower",
+      "description": "The last trace of the old Kowloon station.",
+      "photoKey": "clock_tower",
+      "interactRadiusMetres": 0
+    },
+    {
+      "id": "hk_avenue_stars",
+      "type": "Mcq",
+      "latitude": 22.293200,
+      "longitude": 114.173300,
+      "title": "Avenue of Stars",
+      "description": "Waterfront promenade with a skyline view.",
+      "photoKey": "avenue_of_stars",
+      "interactRadiusMetres": 0
+    },
+    {
+      "id": "uk_home",
+      "type": "Mcq",
+      "latitude": 52.95771762911465,
+      "longitude": -0.9603532275593721,
+      "title": "Home of Hagan",
+      "description": "Waterfront promenade with a skyline view.",
+      "photoKey": "uk_home",
+      "interactRadiusMetres": 0
+    },
+    {
+      "id": "uk_lake",
+      "type": "Puzzle",
+      "latitude": 52.95866139030364,
+      "longitude": -0.952335909865011,
+      "title": "Archers Lake",
+      "description": "Wonderful lake to have a walk.",
+      "photoKey": "uk_lake",
+      "interactRadiusMetres": 0
+    },
+    {
+      "id": "test",
+      "type": "Mcq",
+      "latitude": 52.95825291884848,
+      "longitude": -0.9601618648893302,
+      "title": "Testing",
+      "description": "Wonderful testing environment to have a walk.",
+      "photoKey": "uk_lake",
+      "interactRadiusMetres": 0
+    }
+  ]
+}

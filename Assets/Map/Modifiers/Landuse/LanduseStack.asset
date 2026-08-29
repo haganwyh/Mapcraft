@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6927052481000969522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8a61183121446bbd024747630bf05c, type: 3}
+  m_Name: FilterStack
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.MeshGeneration.Unity.VectorFilterStackObject
+  Filters:
+  - {fileID: 8288247245980834297}
+  - {fileID: 6537456381642078073}
+  - {fileID: 4425928636368507005}
+  - {fileID: 8274638960131524690}
+  - {fileID: 1324238679442535868}
+  Type: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a17705f45444b729e601b91361775ed, type: 3}
+  m_Name: LanduseStack
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.MeshGeneration.Unity.ModifierStackObject
+  Settings:
+    VisibilityZoomRange: {x: 16, y: 17}
+    MergeObjects: 0
+    LayerType: 0
+  Filters: {fileID: -6927052481000969522}
+  MeshModifiers:
+  - {fileID: 5278412172856581, guid: 5f55d91e37ca58e4b9bdbe1478999718, type: 2}
+  GoModifiers:
+  - {fileID: 11400000, guid: e1058897bcb509e49b8f4b74792a63bd, type: 2}
+--- !u!114 &1324238679442535868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb49207f63da8544d9f0a3f790016544, type: 3}
+  m_Name: NewFeatureStringPropertyFilterObject
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.Filters.FeatureStringPropertyFilterObject
+  m_Active: 1
+  PropertyFilterSettings:
+    PropertyName: class
+    CheckOperation: 0
+    FilterString: residential
+    Invert: 1
+--- !u!114 &4425928636368507005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb49207f63da8544d9f0a3f790016544, type: 3}
+  m_Name: NewFeatureStringPropertyFilterObject
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.Filters.FeatureStringPropertyFilterObject
+  m_Active: 1
+  PropertyFilterSettings:
+    PropertyName: class
+    CheckOperation: 0
+    FilterString: hospital
+    Invert: 1
+--- !u!114 &6537456381642078073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb49207f63da8544d9f0a3f790016544, type: 3}
+  m_Name: NewFeatureStringPropertyFilterObject
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.Filters.FeatureStringPropertyFilterObject
+  m_Active: 1
+  PropertyFilterSettings:
+    PropertyName: class
+    CheckOperation: 0
+    FilterString: glacier
+    Invert: 1
+--- !u!114 &8274638960131524690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb49207f63da8544d9f0a3f790016544, type: 3}
+  m_Name: NewFeatureStringPropertyFilterObject
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.Filters.FeatureStringPropertyFilterObject
+  m_Active: 1
+  PropertyFilterSettings:
+    PropertyName: class
+    CheckOperation: 0
+    FilterString: commercial
+    Invert: 1
+--- !u!114 &8288247245980834297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb49207f63da8544d9f0a3f790016544, type: 3}
+  m_Name: NewFeatureStringPropertyFilterObject
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.Filters.FeatureStringPropertyFilterObject
+  m_Active: 1
+  PropertyFilterSettings:
+    PropertyName: class
+    CheckOperation: 0
+    FilterString: sand
+    Invert: 1

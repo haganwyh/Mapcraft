@@ -1,0 +1,25 @@
+Nothing about the shape of the system changes — every piece of it was already built with this move in mind, going all the way back to the first design decision (IMissionSource behind a swappable interface, photoKey as a lookup rather than a direct reference). What changes is narrow and contained: two implementations get swapped, and every caller that already goes through the interface needs zero edits. Here's exactly what moves and what doesn't.
+
+The parts that don't change at all
+
+MissionPoint, McqQuestion, PuzzlePiece/puzzle types, MissionDetail and its subclasses, MinigameType, the CSV parsing logic (ParseCsv, BuildColumnIndex), the dispatch switch from last message, MissionPointManager's spawning/positioning/tap-detection — all of it stays exactly as-is. This is the payoff of everything having been built behind IMissionSource / IQuizSource / MissionPhotoProvider rather than talked to directly: those interfaces are the seam, and a seam that's never actually been exercised until now is about to get its first real test.
+
+What actually swaps: three source implementations
+
+1. JsonMissionSource → a network-backed IMissionSource. Same Load(Action<List<MissionPoint>> onLoaded) signature, but instead of reading a TextAsset, it does a UnityWebRequest.Get(url), runs the exact same JsonUtility.FromJson + per-mission validation loop (id checks, duplicate checks, the Enum.TryParse type-resolution) against the downloaded text, then calls onLoaded. The callback shape was chosen specifically so this didn't have to be a synchronous method — it already tolerates the response arriving later.
+
+2. CsvQuizSource → likewise, over the network, same idea, feeding the same QuizCsvReader.Load(csvText, ...) you already have. The CSV parser doesn't know or care where the string came from.
+
+3. MissionPhotoLibrary → MissionPhotoDownloader, a new class implementing the same MissionPhotoProvider abstract base, using UnityWebRequestTexture.GetTexture(url) to fetch and convert to Sprite. This is the one place the callback-vs-synchronous distinction stops being theoretical — MissionPhotoLibrary.Request currently answers before it even returns; the downloader genuinely won't. Every caller (MissionMarker.Bind, your MissionSystemUIManager, the puzzle panel) already treats Request as async and reads the sprite inside the callback rather than the line after — so none of them need to change, but it's the first moment that laziness would actually be punished if any caller had cut that corner.
+
+What you'll want to add, not swap
+
+A local disk cache. Re-downloading every mission photo and every puzzle piece image on every app launch is real bandwidth and real latency for art that rarely changes. MissionPhotoDownloader should check a cached file (by key, in Application.persistentDataPath) before hitting the network, and write to it after a successful download.
+
+Retry/failure handling. A TextAsset either exists or doesn't — a network request can also time out or fail mid-flight, states the current code has no notion of. Load and Request both need an explicit failure path (empty list / FallbackSprite, plus a logged reason), not just the "missing/empty" check they have now.
+
+A loading state in the UI. Right now a MissionMarker or quiz panel effectively assumes its data is available near-instantly. With real network latency, the player can tap a marker before its photo/questions have arrived — worth a placeholder ("Loading…") state so that gap isn't a blank panel.
+
+Where the actual wiring change lives
+
+One place: whatever currently does new JsonMissionSource(missionJsonAsset) and assigns MissionPointManager.PhotoProvider = missionPhotoLibraryAsset becomes new ServerMissionSource(missionsUrl) and PhotoProvider = missionPhotoDownloaderInstance. That's the entire integration surface — everything downstream keeps reading IMissionSource/MissionPhotoProvider, unaware anything moved.

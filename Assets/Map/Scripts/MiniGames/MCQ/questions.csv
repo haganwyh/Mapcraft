@@ -1,0 +1,4 @@
+mission_id,question_id,question_text,option_a,option_b,option_c,option_d,option_e,correct_index,reward_type,reward_amount
+uk_home,0,How tall is the tower in metres?,24,44,64,84,,0,coin,1
+uk_home,1,What was the clock tower originally part of?,A church,A railway station,A palace,A fort,,1,coin,1
+test,0,This is a testing question?,True,False,,,,0,coin,1

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a17705f45444b729e601b91361775ed, type: 3}
+  m_Name: WaterStack
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.MeshGeneration.Unity.ModifierStackObject
+  Settings:
+    VisibilityZoomRange: {x: 16, y: 17}
+    MergeObjects: 1
+    LayerType: 0
+  Filters: {fileID: 725851625663534321}
+  MeshModifiers:
+  - {fileID: 5278412172856581}
+  - {fileID: 11400000, guid: daf4ffb45ba39e145b3ca12fbcaaa958, type: 2}
+  GoModifiers: []
+--- !u!114 &5278412172856581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1f98279c3d447589a86caced7bbc42, type: 3}
+  m_Name: PolygonMeshModifierObject
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.MeshGeneration.MeshModifiers.ScriptableObjects.PolygonMeshModifierObject
+  m_Active: 1
+  Height: 0
+--- !u!114 &725851625663534321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8a61183121446bbd024747630bf05c, type: 3}
+  m_Name: FilterStack
+  m_EditorClassIdentifier: MapboxVectorModule::Mapbox.VectorModule.MeshGeneration.Unity.VectorFilterStackObject
+  Filters: []
+  Type: 0
