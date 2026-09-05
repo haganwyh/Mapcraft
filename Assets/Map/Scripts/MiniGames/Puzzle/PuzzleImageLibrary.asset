@@ -16,5 +16,17 @@ MonoBehaviour:
   - key: uk_lake_b
     sprite: {fileID: 21300000, guid: 9fa2c4eb8f8da4c47b2908787ef26cfe, type: 3}
   - key: uk_lake_p1
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 9ca171081ac0e3349ac7110750192097, type: 3}
+  - key: uk_lake_p2
+    sprite: {fileID: 21300000, guid: dff2965fbe6638a4db7dad5fd076c02f, type: 3}
+  - key: uk_lake_p3
+    sprite: {fileID: 21300000, guid: 522f4c73a982f804faa9cec9dcf8a45a, type: 3}
+  - key: uk_lake_p4
+    sprite: {fileID: 21300000, guid: 2c4ed44d7852102459ceba7b4b2f3283, type: 3}
+  - key: uk_lake_p5
+    sprite: {fileID: 21300000, guid: d87147a7543bca541a527430ac3417cc, type: 3}
+  - key: uk_lake_p6
+    sprite: {fileID: 21300000, guid: ef5cc2e00b3a60a40a230dc1a8ebf5ed, type: 3}
+  - key: uk_lake_p7
+    sprite: {fileID: 21300000, guid: 3af1e4c71381af245b4aea35d831af67, type: 3}
   FallbackSprite: {fileID: 0}

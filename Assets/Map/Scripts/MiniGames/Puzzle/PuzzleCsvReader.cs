@@ -105,7 +105,7 @@ namespace Mapbox.Missions.Puzzles
                     missionData.Pieces.Add(new PuzzlePieceData
                     {
                         PieceId = pieceId,
-                        ImageId = Get("image_key"),
+                        ImageKey = Get("image_key"),
                         CorrectX = cX,
                         CorrectY = cY
                     });

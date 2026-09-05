@@ -49,7 +49,7 @@ namespace Mapbox.Missions
     public class PuzzlePieceData
     {
         public string PieceId;
-        public string ImageId;
+        public string ImageKey;
         public float CorrectX;
         public float CorrectY;
     }
