@@ -9,17 +9,21 @@ public class PuzzlePiece : MonoBehaviour
     public string pieceId;
     [NonSerialized]
     public string imageKey;
-    public MissionPhotoProvider PhotoProvider;
+    [NonSerialized]
+    public Sprite imageSprite;
 
     private Image pieceImage;
 
     public void Initialise()
     {
         pieceImage = GetComponent<Image>();
-        PhotoProvider.Request(imageKey, sprite =>
+        if (imageSprite != null)
         {
-            pieceImage.sprite = sprite;
-            pieceImage.enabled = sprite != null;
-        });
+            pieceImage.sprite = imageSprite;
+        }
+        else
+        {
+            Debug.LogWarning("Puzzle piece image is missing!");
+        }
     }
 }

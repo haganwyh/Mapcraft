@@ -3,8 +3,12 @@ using Mapbox.Missions.Puzzles;
 using Mapbox.Missions.Quiz;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 public class MissionSystemManager : MonoBehaviour
@@ -39,6 +43,7 @@ public class MissionSystemManager : MonoBehaviour
     private MissionPoint currentMission;
     private Dictionary<string, List<McqQuestion>> mcqQuestions;
     private Dictionary<string, PuzzleMissionDetail> puzzleMissionDetails;
+    private AsyncOperationHandle<Sprite> missionImageHandle;
 
     // Guards against a stale response landing after a NEWER mission has already triggered.
     // Harmless today (MissionPhotoLibrary answers synchronously, same frame) — but load-
@@ -64,20 +69,35 @@ public class MissionSystemManager : MonoBehaviour
     {
         currentMission = missionPoint;
 
+        // Missing clear cache code!!!!!
+
         // Set UI components
         titleText.text = missionPoint.title;
         descriptionText.text = missionPoint.description;
 
+        UnloadPreviousMissionImage();
+
         pendingMissionId = missionPoint.id;
         string requestedId = missionPoint.id;
 
-        missionPointManager.PhotoProvider.Request(missionPoint.photoKey, sprite =>
+        missionImageHandle = Addressables.LoadAssetAsync<Sprite>(missionPoint.photoKey);
+        missionImageHandle.Completed += (handle) =>
         {
             if (pendingMissionId != requestedId) return;   // superseded — ignore
 
-            missionImage.sprite = sprite;
-            missionImage.enabled = sprite != null;
-        });
+            missionImage.sprite = handle.Result;
+            missionImage.enabled = handle.Result != null;
+        };
+    }
+
+    private void UnloadPreviousMissionImage()
+    {
+        // Release previous mission image to prevent memory leaks
+        if (missionImageHandle.IsValid())
+        {
+            Addressables.Release(missionImageHandle);
+        }
+        Debug.Log("Previous mission image unloaded!");
     }
 
     public void OnMissionStart()

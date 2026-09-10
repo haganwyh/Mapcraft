@@ -5,10 +5,12 @@ using Mapbox.BaseModule.Map;
 using Mapbox.BaseModule.Utilities;
 using Mapbox.Example.Scripts.Map;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.ResourceManagement.AsyncOperations;
 #endif
 
 namespace Mapbox.Missions
@@ -50,10 +52,12 @@ namespace Mapbox.Missions
                  "\"photoKey\": \"...\" } ] }")]
         public TextAsset MissionJson;
 
+        /*
         [Tooltip("Resolves photoKey to a Sprite. Create via Assets > Create > Mapbox > Missions " +
                  "> Photo Library. Swap for a downloader implementation when missions come " +
                  "from a server.")]
         public MissionPhotoProvider PhotoProvider;
+        */
 
         [Header("Ranges (real ground metres)")]
         [Tooltip("Markers exist within this distance of the player.")]
@@ -244,6 +248,7 @@ namespace Mapbox.Missions
             marker.name = $"Mission_{mission.id}";
             marker.Bind(mission, null, cam);
 
+            /*
             // Photo arrives via callback so a future downloading provider needs no changes here.
             if (PhotoProvider != null)
             {
@@ -255,6 +260,17 @@ namespace Mapbox.Missions
                         marker.SetPhoto(sprite);
                 });
             }
+            */
+
+            string wantedId = mission.id;
+            marker.markerImageHandle = Addressables.LoadAssetAsync<Sprite>(mission.photoKey);
+            marker.markerImageHandle.Completed += (handle) =>
+            {
+                if (marker != null && marker.Mission != null && marker.Mission.id == wantedId)
+                {
+                    marker.SetPhoto(handle.Result);
+                }
+            };
 
             _active[mission.id] = marker;
             PositionMarker(marker);
@@ -265,6 +281,13 @@ namespace Mapbox.Missions
             if (!_active.TryGetValue(id, out var marker)) return;
             _active.Remove(id);
             if (marker == null) return;
+
+            // Release the specific asset handle tied to this marker
+            if (marker.markerImageHandle.IsValid())
+            {
+                Addressables.Release(marker.markerImageHandle);
+            }
+
             marker.gameObject.SetActive(false);
             marker.transform.SetParent(_root, false);
             _pool.Push(marker);

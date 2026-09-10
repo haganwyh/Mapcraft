@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PuzzlePieces
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: PuzzlePieces
+  m_GUID: dbd41f134e9de974f97c82bc17d4c119
+  m_SerializeEntries:
+  - m_GUID: 2c4ed44d7852102459ceba7b4b2f3283
+    m_Address: uk_lake_p4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3af1e4c71381af245b4aea35d831af67
+    m_Address: uk_lake_p7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 522f4c73a982f804faa9cec9dcf8a45a
+    m_Address: uk_lake_p3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ca171081ac0e3349ac7110750192097
+    m_Address: uk_lake_p1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d87147a7543bca541a527430ac3417cc
+    m_Address: uk_lake_p5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dff2965fbe6638a4db7dad5fd076c02f
+    m_Address: uk_lake_p2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef5cc2e00b3a60a40a230dc1a8ebf5ed
+    m_Address: uk_lake_p6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 19e8fbbe112c09c43989ff9b8e1a59b3, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c3c08e9a9a684ed4983d0bbddec234cc, type: 2}
+    - {fileID: 11400000, guid: 291bc9b3b61474b4b98ea22c864b6529, type: 2}

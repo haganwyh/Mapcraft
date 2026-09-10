@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 namespace Mapbox.Missions
@@ -70,6 +71,8 @@ namespace Mapbox.Missions
         private Vector3 _baseScale = Vector3.one;
         private float _referenceHeight = 1f;   // world height at authored scale, measured once
         private bool _measured;
+
+        public AsyncOperationHandle<Sprite> markerImageHandle;
 
         private void Awake()
         {
