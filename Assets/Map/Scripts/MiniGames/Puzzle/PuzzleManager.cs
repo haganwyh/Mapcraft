@@ -12,6 +12,9 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]
     private GameObject piecePrefab;
 
+    [SerializeField]
+    private GameObject slotPrefab;
+
     [Header("UI References")]
 
     [SerializeField]
@@ -56,6 +59,10 @@ public class PuzzleManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform child in baseImage.GetComponent<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     private void LoadPieces(PuzzleMissionDetail puzzle)
@@ -84,14 +91,14 @@ public class PuzzleManager : MonoBehaviour
             // Create pieces game object
             foreach (PuzzlePieceData piece in pieces)
             {
-                GameObject pieceObject = Instantiate(piecePrefab, contentPanel, false);
+                GameObject slotObject = Instantiate(slotPrefab, contentPanel, false);
+                GameObject pieceObject = Instantiate(piecePrefab, slotObject.GetComponent<Transform>(), false);
                 PuzzlePiece puzzlePiece = pieceObject.GetComponent<PuzzlePiece>();
                 puzzlePiece.pieceId = piece.PieceId;
-                puzzlePiece.imageKey = piece.ImageKey;
                 Sprite imageSprite;
                 puzzleSpriteCache.TryGetValue(piece.ImageKey, out imageSprite);
                 puzzlePiece.imageSprite = imageSprite;
-                puzzlePiece.Initialise();
+                puzzlePiece.Initialise(new Vector2(piece.CorrectX, piece.CorrectY), baseImage.GetComponent<RectTransform>());
             }
         };
     }

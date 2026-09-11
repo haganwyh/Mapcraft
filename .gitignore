@@ -77,3 +77,9 @@ crashlytics-build.properties
 # Mapbox key
 /[Aa]ssets/Resources/Mapbox/MapboxConfiguration.txt
 /[Aa]ssets/Resources/Mapbox/MapboxConfiguration.txt.meta
+
+# IL2CPP build backup folder (name is ProductName_BackUpThisFolder_ButDontShipItWithYourGame)
+*_BackUpThisFolder_ButDontShipItWithYourGame/
+
+# Burst debug info (name is ProductName_BurstDebugInformation_DoNotShip)
+*_BurstDebugInformation_DoNotShip/
