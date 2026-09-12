@@ -1,5 +1,6 @@
 using Mapbox.Missions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -8,7 +9,6 @@ using UnityEngine.UI;
 
 public class PuzzleManager : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject piecePrefab;
 
@@ -26,9 +26,31 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]
     private Image baseImage;
 
+    [SerializeField]
+    private GameObject gameStatePanel;
+
+    [SerializeField]
+    private GameObject resultStatePanel;
+
+    private bool isGameEnded = false;
+    private List<PuzzlePiece> useablePieces = new List<PuzzlePiece>();
     private Dictionary<string, Sprite> puzzleSpriteCache = new Dictionary<string, Sprite>();
     private AsyncOperationHandle<IList<Sprite>> loadHandle;
     private AsyncOperationHandle<Sprite> backgroundHandle;
+
+    public static PuzzleManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        // Enforce a single instance in the scene
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     internal void Begin(PuzzleMissionDetail puzzle)
     {
@@ -37,6 +59,8 @@ public class PuzzleManager : MonoBehaviour
         ClearExistingPieces();
         LoadPieces(puzzle);
 
+        gameStatePanel.SetActive(true);
+        resultStatePanel.SetActive(false);
         puzzlePanel.SetActive(true);
     }
 
@@ -55,6 +79,9 @@ public class PuzzleManager : MonoBehaviour
 
     private void ClearExistingPieces()
     {
+        isGameEnded = false;
+        useablePieces.Clear();
+
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);
@@ -99,6 +126,11 @@ public class PuzzleManager : MonoBehaviour
                 puzzleSpriteCache.TryGetValue(piece.ImageKey, out imageSprite);
                 puzzlePiece.imageSprite = imageSprite;
                 puzzlePiece.Initialise(new Vector2(piece.CorrectX, piece.CorrectY), baseImage.GetComponent<RectTransform>());
+
+                if (piece.CorrectX >= 0 && piece.CorrectY >= 0)
+                {
+                    useablePieces.Add(puzzlePiece);
+                }
             }
         };
     }
@@ -125,5 +157,25 @@ public class PuzzleManager : MonoBehaviour
             Addressables.Release(backgroundHandle);
         }
         Debug.Log("Previous background unloaded!");
+    }
+    internal void CheckEndGame()
+    {
+        if (isGameEnded) return;
+
+        foreach (PuzzlePiece piece in useablePieces)
+        {
+            if (!piece.isPlaced) return;
+        }
+
+        isGameEnded = true;
+        StartCoroutine(EndGameRoutine());
+    }
+
+    private IEnumerator EndGameRoutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        gameStatePanel.SetActive(false);
+        resultStatePanel.SetActive(true);
     }
 }

@@ -1,8 +1,8 @@
 ﻿mission_id,piece_id,image_key,correct_x,correct_y
 uk_lake,0,uk_lake_p1,540,480
-uk_lake,1,uk_lake_p2,0,0
-uk_lake,2,uk_lake_p3,0,0
+uk_lake,1,uk_lake_p2,-1,-1
+uk_lake,2,uk_lake_p3,-1,-1
 uk_lake,3,uk_lake_p4,540,960
-uk_lake,4,uk_lake_p5,0,0
-uk_lake,5,uk_lake_p6,0,0
-uk_lake,6,uk_lake_p7,0,0
+uk_lake,4,uk_lake_p5,-1,-1
+uk_lake,5,uk_lake_p6,-1,-1
+uk_lake,6,uk_lake_p7,-1,-1
