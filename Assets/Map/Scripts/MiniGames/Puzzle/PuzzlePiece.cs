@@ -12,11 +12,16 @@ public class PuzzlePiece : MonoBehaviour,
     [NonSerialized] public string pieceId;
     [NonSerialized] public Sprite imageSprite;
 
+    private bool useable;
+
     [Header("Hold & Drop Settings")]
     [SerializeField] private float holdDuration = 0.5f;
     [SerializeField] private float snapTolerance = 50f;
     [SerializeField] private float scrollCancelThreshold = 50f;
     [SerializeField] private ScrollRect scrollRect;
+
+    // Manager References
+    private PuzzleManager puzzleManager;
 
     // UI References
     private Image pieceImage;
@@ -34,7 +39,7 @@ public class PuzzlePiece : MonoBehaviour,
     private Vector2 pointerDownScreenPos;
     private Coroutine holdTimerCoroutine;
     private bool isDragging = false;
-    private bool isPlaced = false;
+    public bool isPlaced = false;
 
     private void Awake()
     {
@@ -48,11 +53,18 @@ public class PuzzlePiece : MonoBehaviour,
         }
     }
 
+    private void Start()
+    {
+        puzzleManager = PuzzleManager.Instance;
+    }
+
     public void Initialise(Vector2 targetExcelPos, RectTransform mainBoardParent)
     {
         correctTargetPos = ConvertDesignToUnityPosition(targetExcelPos);
         boardParent = mainBoardParent;
         slotParent = transform.parent;
+
+        useable = (targetExcelPos.x >= 0 && targetExcelPos.y >= 0); // (-1, -1) = Not a useful piece
 
         if (scrollRect == null)
         {
@@ -210,6 +222,7 @@ public class PuzzlePiece : MonoBehaviour,
 
         if (distance <= snapTolerance)
         {
+            // Drop on correct position!
             rectTransform.anchoredPosition = correctTargetPos;
             isPlaced = true;
 
@@ -217,6 +230,8 @@ public class PuzzlePiece : MonoBehaviour,
             {
                 Destroy(slotParent.gameObject);
             }
+
+            puzzleManager.CheckEndGame();
 
             this.enabled = false;
             return true;
