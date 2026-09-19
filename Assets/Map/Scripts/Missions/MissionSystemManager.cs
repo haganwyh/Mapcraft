@@ -17,9 +17,6 @@ public class MissionSystemManager : MonoBehaviour
     private TextAsset mcqQuestionsCsv;
 
     [SerializeField]
-    private TextAsset puzzleBaseCsv;
-
-    [SerializeField]
     private TextAsset puzzlePiecesCsv;
 
     [SerializeField]
@@ -57,7 +54,7 @@ public class MissionSystemManager : MonoBehaviour
         missionPointManager.MissionTriggered += OnMissionTriggered;
 
         mcqQuestions = McqCsvReader.Load(mcqQuestionsCsv.ToString());
-        puzzleMissionDetails = PuzzleCsvReader.Load(puzzleBaseCsv.ToString(), puzzlePiecesCsv.ToString(), null);
+        puzzleMissionDetails = PuzzleCsvReader.Load(puzzlePiecesCsv.ToString(), null);
     }
 
     private void OnDestroy()
@@ -68,8 +65,6 @@ public class MissionSystemManager : MonoBehaviour
     private void OnMissionTriggered(MissionPoint missionPoint)
     {
         currentMission = missionPoint;
-
-        // Missing clear cache code!!!!!
 
         // Set UI components
         titleText.text = missionPoint.title;

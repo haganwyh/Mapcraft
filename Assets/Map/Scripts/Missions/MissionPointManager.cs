@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.ResourceManagement.AsyncOperations;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
-using UnityEngine.ResourceManagement.AsyncOperations;
 #endif
 
 namespace Mapbox.Missions
@@ -47,10 +47,9 @@ namespace Mapbox.Missions
         public MissionMarker MarkerPrefab;
 
         [Header("Data")]
-        [Tooltip("JSON file of missions. Format: { \"missions\": [ { \"id\": \"...\", " +
-                 "\"latitude\": 22.298, \"longitude\": 114.170, \"title\": \"...\", " +
-                 "\"photoKey\": \"...\" } ] }")]
-        public TextAsset MissionJson;
+        [Tooltip("CSV file of missions — see CsvMissionSource. Columns: id, type, latitude, " +
+         "longitude, title, description, interactRadiusMetres.")]
+        public TextAsset MissionCsv;
 
         /*
         [Tooltip("Resolves photoKey to a Sprite. Create via Assets > Create > Mapbox > Missions " +
@@ -148,7 +147,7 @@ namespace Mapbox.Missions
             _map = map;
 
             // Swap this line for a server-backed IMissionSource later; nothing else changes.
-            _source = new JsonMissionSource(MissionJson);
+            _source = new CsvMissionSource(MissionCsv);
             _source.Load(list =>
             {
                 _missions.Clear();
