@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: fdcbd4f69dc3a9143a2be3705a660ace
   m_SerializeEntries:
   - m_GUID: 9fa2c4eb8f8da4c47b2908787ef26cfe
-    m_Address: uk_lake_b
+    m_Address: uk_lake_b0
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

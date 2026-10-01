@@ -42,7 +42,6 @@ namespace Mapbox.Missions
 
     public class PuzzleMissionDetail : MissionDetail
     {
-        public string BaseImageKey;
         public List<PuzzlePieceData> Pieces = new List<PuzzlePieceData>();
     }
 
@@ -98,7 +97,11 @@ namespace Mapbox.Missions
         void Load(Action<List<MissionPoint>> onLoaded);
     }
 
-    /// <summary>Reads missions from a TextAsset JSON file in the project.</summary>
+    /// <summary>
+    /// UNUSED as of the CsvMissionSource migration — kept as a rollback path while the CSV
+    /// pipeline is still new. Delete once missions.csv has been the only source in a real build
+    /// for a while with no issues.
+    /// </summary>
     public class JsonMissionSource : IMissionSource
     {
         private readonly TextAsset _json;

@@ -68,7 +68,7 @@ public class PuzzleManager : MonoBehaviour
     {
         UnloadPreviousBackground();
         baseImage.enabled = false;
-        backgroundHandle = Addressables.LoadAssetAsync<Sprite>(puzzle.BaseImageKey);
+        backgroundHandle = Addressables.LoadAssetAsync<Sprite>(puzzle.MissionId + "_b0");
 
         backgroundHandle.Completed += (handle) =>
         {
