@@ -10,7 +10,7 @@ namespace Mapbox.Missions.Puzzles
     public static class PuzzleCsvReader
     {
         private static readonly string[] PieceRequiredColumns =
-            { "mission_id", "piece_id", "correct_x", "correct_y" };
+            { "mission_id", "piece_id", "correct_x", "correct_y", "rotation" };
 
         /// <param name="piecesCsvText">Raw file contents for the puzzle pieces.</param>
         /// <param name="validMissionIds">Optional validation set.</param>
@@ -55,13 +55,15 @@ namespace Mapbox.Missions.Puzzles
 
                 float.TryParse(Get("correct_x"), out float cX);
                 float.TryParse(Get("correct_y"), out float cY);
+                float.TryParse(Get("rotation"), out float rotation);
 
                 missionData.Pieces.Add(new PuzzlePieceData
                 {
                     PieceId = pieceId,
                     ImageKey = missionId + "_p" + pieceId,
                     CorrectX = cX,
-                    CorrectY = cY
+                    CorrectY = cY,
+                    Rotation = rotation,
                 });
             }
 

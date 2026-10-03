@@ -125,7 +125,7 @@ public class PuzzleManager : MonoBehaviour
                 Sprite imageSprite;
                 puzzleSpriteCache.TryGetValue(piece.ImageKey, out imageSprite);
                 puzzlePiece.imageSprite = imageSprite;
-                puzzlePiece.Initialise(new Vector2(piece.CorrectX, piece.CorrectY), baseImage.GetComponent<RectTransform>());
+                puzzlePiece.Initialise(new Vector2(piece.CorrectX, piece.CorrectY), piece.Rotation, baseImage.GetComponent<RectTransform>());
 
                 if (piece.CorrectX >= 0 && piece.CorrectY >= 0)
                 {

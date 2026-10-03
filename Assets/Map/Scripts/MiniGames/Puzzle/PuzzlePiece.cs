@@ -58,7 +58,7 @@ public class PuzzlePiece : MonoBehaviour,
         puzzleManager = PuzzleManager.Instance;
     }
 
-    public void Initialise(Vector2 targetExcelPos, RectTransform mainBoardParent)
+    public void Initialise(Vector2 targetExcelPos, float rotation, RectTransform mainBoardParent)
     {
         correctTargetPos = ConvertDesignToUnityPosition(targetExcelPos);
         boardParent = mainBoardParent;
@@ -85,6 +85,9 @@ public class PuzzlePiece : MonoBehaviour,
         {
             Debug.LogWarning($"PuzzlePiece ({gameObject.name}): Image sprite is missing!");
         }
+
+        // Set init rotation
+        pieceImage.rectTransform.localEulerAngles = new Vector3(0f, 0f, rotation);
     }
 
     private static Vector2 ConvertDesignToUnityPosition(Vector2 designPos)
@@ -230,6 +233,9 @@ public class PuzzlePiece : MonoBehaviour,
             {
                 Destroy(slotParent.gameObject);
             }
+
+            // Reset rotation
+            pieceImage.rectTransform.localEulerAngles = new Vector3(0f, 0f, 0f);
 
             puzzleManager.CheckEndGame();
 

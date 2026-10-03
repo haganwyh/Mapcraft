@@ -51,6 +51,8 @@ namespace Mapbox.Missions
         public string ImageKey;
         public float CorrectX;
         public float CorrectY;
+
+        public float Rotation;
     }
 
     [Serializable]
