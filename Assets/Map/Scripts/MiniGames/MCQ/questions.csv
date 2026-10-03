@@ -1,4 +1,6 @@
-mission_id,question_id,question_text,option_a,option_b,option_c,option_d,option_e,correct_index,reward_type,reward_amount
+﻿mission_id,question_id,question_text,option_a,option_b,option_c,option_d,option_e,correct_index,reward_type,reward_amount
 uk_home,0,How tall is the tower in metres?,24,44,64,84,,0,coin,1
 uk_home,1,What was the clock tower originally part of?,A church,A railway station,A palace,A fort,,1,coin,1
 test,0,This is a testing question?,TRUE,FALSE,,,,0,coin,1
+地名,2,以下這四個名聽起來都跟去洗手間有關，哪一個才是香港真正存在的地方？,失禁田,爆石坑,痾尿墩,肚瀉嶺,,2,coin,1
+石,3,建房子時如果選錯岩石，遇到雨水可能會軟化甚至引發山泥傾瀉！你絕對不能用哪一種高度風化的岩石或礦物建地基？,堅硬的花崗岩,高嶺土 (Kaolin / 熱帶高度風化黏土),新鮮的凝灰岩,緻密的結晶砂岩,,1,coin,1
