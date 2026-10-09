@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: MissionImages
   m_GUID: fe1becf5f5ca137469fd3e96b60b4c7c
   m_SerializeEntries:
+  - m_GUID: 174c418d1c9d45845b01d7a6bf7888d1
+    m_Address: rock
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 828e64dbd09c2ea429ec5dee2370947e
+    m_Address: place_name
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dcfc5f5f4281e2a4583f90bdbf4053be
     m_Address: uk_lake
     m_ReadOnly: 0
