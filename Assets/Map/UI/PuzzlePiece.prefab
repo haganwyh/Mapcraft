@@ -92,3 +92,4 @@ MonoBehaviour:
   snapTolerance: 50
   scrollCancelThreshold: 15
   scrollRect: {fileID: 0}
+  isPlaced: 0
