@@ -60,9 +60,15 @@ public class PuzzlePiece : MonoBehaviour,
 
     public void Initialise(Vector2 targetExcelPos, float rotation, RectTransform mainBoardParent)
     {
-        correctTargetPos = ConvertDesignToUnityPosition(targetExcelPos);
         boardParent = mainBoardParent;
         slotParent = transform.parent;
+
+        useable = (targetExcelPos.x >= 0 && targetExcelPos.y >= 0);
+
+        // Size the piece will have on the board (same as SetNativeSize gives)
+        Vector2 pieceSize = GetBoardSize();
+
+        correctTargetPos = ConvertDesignToUnityPosition(targetExcelPos, pieceSize);
 
         useable = (targetExcelPos.x >= 0 && targetExcelPos.y >= 0); // (-1, -1) = Not a useful piece
 
@@ -90,11 +96,24 @@ public class PuzzlePiece : MonoBehaviour,
         pieceImage.rectTransform.localEulerAngles = new Vector3(0f, 0f, rotation);
     }
 
-    private static Vector2 ConvertDesignToUnityPosition(Vector2 designPos)
+    private Vector2 GetBoardSize()
     {
-        float unityX = designPos.x - 540f;  // 1080 / 2
-        float unityY = 960f - designPos.y;  // 1920 / 2
-        return new Vector2(unityX, unityY);
+        if (imageSprite == null) return rectTransform.sizeDelta;
+
+        // Matches what Image.SetNativeSize() produces
+        float ppu = imageSprite.pixelsPerUnit / (parentCanvas != null ? parentCanvas.referencePixelsPerUnit : 100f);
+        return imageSprite.rect.size / ppu;
+    }
+
+    private static Vector2 ConvertDesignToUnityPosition(Vector2 topLeftDesignPos, Vector2 pieceSize)
+    {
+        // Top-left corner, relative to canvas center (Unity is Y-up)
+        float topLeftX = topLeftDesignPos.x - 540f;   // 1080 / 2
+        float topLeftY = 960f - topLeftDesignPos.y;   // 1920 / 2
+
+        // Shift to the center of the piece (pivot 0.5, 0.5)
+        return new Vector2(topLeftX + pieceSize.x * 0.5f,
+                           topLeftY - pieceSize.y * 0.5f);
     }
 
     #region Event System Handlers
@@ -201,7 +220,7 @@ public class PuzzlePiece : MonoBehaviour,
 
             rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
             rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-            rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            //rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
             pieceImage.preserveAspect = false;
             pieceImage.SetNativeSize();
